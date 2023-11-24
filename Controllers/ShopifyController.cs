@@ -62,10 +62,14 @@ namespace minor.Controllers
                 HttpResponseMessage response = await client.PostAsJsonAsync("https://f35ee4.myshopify.com/admin/api/2023-10/products.json", productj);
                 if(response.IsSuccessStatusCode){
                     ShopifyReturnPost? product = await response.Content.ReadAsAsync<ShopifyReturnPost>();
+                    var imagej = post.body.images[0].attachment;
+                    if(imagej.Contains("base64")){
+                        imagej = imagej.Split("base64")[1];
+                    }
                     var shopifyPicture = new ShopifyPicture(){
                         image = new image(){
                             position = 1,
-                            attachment = post.body.images[0].attachment
+                            attachment = imagej
                         }
                     };
                     var response2 = await client.PostAsJsonAsync("https://f35ee4.myshopify.com/admin/api/2023-10/products/" +product.product.id + "/images.json", shopifyPicture);

@@ -30,7 +30,7 @@ namespace minor.Controllers
 
             if (aPIKey == null)
             {
-                return NotFound("API key bestaat niet");
+                return NotFound("API key does   ot exist");
             }
 
             return aPIKey;
