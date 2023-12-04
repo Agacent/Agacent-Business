@@ -6,4 +6,6 @@ public class Body{
     public string body_html{get;set;}
     public string vendor{get;set;}
     public List<images> images{get;set;}
+    public List<variantsP> variants{get;set;}
+    public List<optionsP> options{get;set;}
 }
