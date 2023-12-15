@@ -33,7 +33,7 @@ namespace minor.Controllers
                 }
                 ShopifyGet content = new ShopifyGet();
                 HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("X-Shopify-Access-Token", "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");
+                client.DefaultRequestHeaders.Add("X-Shopify-Access-Token", "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");
                 HttpResponseMessage response = await client.GetAsync("https://f35ee4.myshopify.com/admin/api/2023-10/products.json");
                 if(response.IsSuccessStatusCode){
                     content = await response.Content.ReadAsAsync<ShopifyGet>();
@@ -55,7 +55,7 @@ namespace minor.Controllers
                 }
 
                 HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("X-Shopify-Access-Token", "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");
+                client.DefaultRequestHeaders.Add("X-Shopify-Access-Token", "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");
                 var productj = new productj(){
                     product = post.body
                 };
@@ -79,7 +79,8 @@ namespace minor.Controllers
                     return Ok("Item has been added to your collection, but no picture could be added.");
                 }
                 else{
-                    return BadRequest("Error");
+                    
+                    return BadRequest(response.Content.ReadAsStream());
                 }
         }
 

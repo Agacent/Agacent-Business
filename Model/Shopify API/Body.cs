@@ -8,4 +8,5 @@ public class Body{
     public List<images> images{get;set;}
     public List<variantsP> variants{get;set;}
     public List<optionsP> options{get;set;}
+    public string status{get;set;}
 }
